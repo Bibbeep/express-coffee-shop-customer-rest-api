@@ -1,14 +1,9 @@
-const { BadRequestError } = require("../utils/error");
+const User = require('../models/user');
+const { BadRequestError, UserExistError } = require("../utils/error");
 
 module.exports = {
-    validate: (user) => {
-        const {
-            username,
-            email,
-            password,
-            gender,
-            birthdate
-        } = user;
+    validate: async (data) => {
+        const { username, email, password, gender, birthdate } = data;
 
         if (!username || !email || !password || !gender || !birthdate) {
             throw new BadRequestError('Username, email, password, gender, and birthdate are required!');
@@ -19,7 +14,7 @@ module.exports = {
             typeof password !== 'string' ||
             typeof gender !== 'string' ||
             typeof birthdate !== 'string') {
-                throw new BadRequestError('Username, email, password, gender, and birthdate must be string type!')
+            throw new BadRequestError('Username, email, password, gender, and birthdate must be string type!')
         }
 
         if (!email.match(
@@ -39,6 +34,11 @@ module.exports = {
         if (!birthdate.match(/^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g)) {
             throw new BadRequestError('Birthdate must be in valid format! [ DD/MM/yyyy ]');
         }
-        // @TODO: Query database to check if email is registered
+
+        const isExistedEmail = await User.findByEmail(email);
+        
+        if (isExistedEmail) {
+            throw new UserExistError('Failed to register! Email already registered');
+        }
     }
 };

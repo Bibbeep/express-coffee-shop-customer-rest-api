@@ -26,9 +26,17 @@ class NotFoundError extends Error {
     }
 }
 
+class UserExistError extends Error {
+    constructor(message) {
+        super(message);
+        this.statusCode = 200;
+    }
+}
+
 module.exports = {
     BadRequestError,
     UnauthorizedError,
     ForbiddenError,
-    NotFoundError
+    NotFoundError,
+    UserExistError
 };

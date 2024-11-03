@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const router = require('./routes/index');
 const morgan = require('morgan');
-const { PORT = 5000 } = process.env;
+const { PORT } = process.env;
 
 app.use(morgan('dev'));
 app.use(express.json());

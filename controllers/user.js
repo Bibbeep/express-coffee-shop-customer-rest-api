@@ -1,18 +1,28 @@
 const UserValidation = require('../validation/user');
+const User = require('../models/user');
 
 module.exports = {
     create: async (req, res) => {
         try {
-            UserValidation.validate(req.body);
+            await UserValidation.validate(req.body);
+            const userData = await User.create(req.body);
 
-            return res.status(200).json({
+            return res.status(201).json({
                 status: 'OK',
-                message: 'Successfully registered'
+                message: 'Successfully registered',
+                data: userData
             });
         } catch (err) {
-            return res.status(err.statusCode).json({
+            if (err.statusCode) {
+                return res.status(err.statusCode).json({
+                    status: 'Fail',
+                    message: err.message
+                });
+            }
+
+            return res.status(500).json({
                 status: 'Fail',
-                message: err.message
+                message: 'Failed to register'
             });
         }
     }
