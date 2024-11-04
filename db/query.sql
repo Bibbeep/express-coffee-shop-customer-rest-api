@@ -25,17 +25,17 @@ CREATE TABLE IF NOT EXISTS user_account (
 	username varchar(30) NOT NULL,
 	email varchar(255) UNIQUE NOT NULL,
 	password varchar(60),
-	google_id varchar(255),
+	googleId varchar(255),
 	PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS profile (
 	id int GENERATED ALWAYS AS IDENTITY,
-	user_account_id int NOT NULL REFERENCES user_account(id), 
-	first_name varchar(100) NOT NULL,
-	last_name varchar(100) NOT NULL,
-	profile_gender gender,
-	birthdate date,
+	user_account_id int REFERENCES user_account(id), 
+	first_name varchar(100),
+	last_name varchar(100),
+	profile_gender gender NOT NULL,
+	birthdate date NOT NULL,
 	address varchar(255),
 	phone_number varchar(15),
 	picture_url text,
@@ -52,3 +52,6 @@ BEGIN
     EXECUTE 'ALTER SEQUENCE profile_id_seq RESTART WITH 1';
 END;
 $$;
+
+select * from user_account;
+select * from profile;
