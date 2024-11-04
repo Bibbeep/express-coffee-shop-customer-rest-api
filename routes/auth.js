@@ -3,7 +3,7 @@ const userController = require('../controllers/user');
 
 router.post('/register', userController.create);
 
-// router.use('/login');
+router.use('/login', userController.login);
 
 // router.use('/login/google');
 

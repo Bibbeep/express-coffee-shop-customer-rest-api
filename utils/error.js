@@ -33,10 +33,18 @@ class UserExistError extends Error {
     }
 }
 
+class InvalidCredentialError extends Error {
+    constructor(message) {
+        super(message);
+        this.statusCode = 401;
+    }
+}
+
 module.exports = {
     BadRequestError,
     UnauthorizedError,
     ForbiddenError,
     NotFoundError,
-    UserExistError
+    UserExistError,
+    InvalidCredentialError
 };

@@ -41,3 +41,17 @@ CREATE TABLE IF NOT EXISTS profile (
 	picture_url text,
 	PRIMARY KEY (id)
 );
+
+CREATE OR REPLACE PROCEDURE remove_user_data()
+LANGUAGE plpgsql
+AS $$
+BEGIN
+	EXECUTE 'TRUNCATE TABLE user_account CASCADE';
+    EXECUTE 'TRUNCATE TABLE profile CASCADE';
+    EXECUTE 'ALTER SEQUENCE user_account_id_seq RESTART WITH 1';
+    EXECUTE 'ALTER SEQUENCE profile_id_seq RESTART WITH 1';
+END;
+$$;
+
+select * from user_account;
+select * from profile;

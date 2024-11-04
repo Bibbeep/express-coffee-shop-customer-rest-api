@@ -17,7 +17,7 @@ class User {
 
     static async findByEmail(email) {
         const user = await conn.query(`SELECT * FROM user_account WHERE email = '${email}';`);
-        return user.rows.length === 0 ? false : user.rows[0].id;
+        return user.rows.length === 0 ? false : user.rows[0];
     }
 }
 

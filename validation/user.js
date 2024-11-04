@@ -1,8 +1,9 @@
 const User = require('../models/user');
-const { BadRequestError, UserExistError } = require("../utils/error");
+const { BadRequestError, UserExistError, InvalidCredentialError } = require("../utils/error");
+const bcrypt = require('bcrypt');
 
 module.exports = {
-    validate: async (data) => {
+    validateRegister: async (data) => {
         const { username, email, password, gender, birthdate } = data;
 
         if (!username || !email || !password || !gender || !birthdate) {
@@ -40,5 +41,30 @@ module.exports = {
         if (isExistedEmail) {
             throw new UserExistError('Failed to register! Email already registered');
         }
-    }
+    },
+    validateLogin: async (data) => {
+        const { email, password } = data;
+
+        if (!email || !password) {
+            throw new BadRequestError('Email and password are required!');
+        }
+
+        if (!email.match(
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )) {
+            throw new BadRequestError('Email must be in valid format!');
+        }
+
+        const userData = await User.findByEmail(email);
+
+        if (!userData || !(await bcrypt.compare(password, userData.password))) {
+            throw new InvalidCredentialError('Wrong email or password!');
+        }
+
+        return {
+            id: userData.id,
+            username: userData.username,
+            email: userData.email
+        };
+    },
 };
