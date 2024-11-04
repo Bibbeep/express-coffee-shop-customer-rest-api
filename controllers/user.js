@@ -1,4 +1,4 @@
-const UserValidation = require('../validation/user');
+const UserValidation = require('../validations/user');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
@@ -53,5 +53,16 @@ module.exports = {
                 message: 'Failed to login'
             });
         }
+    },
+    googleAuth: (req, res) => {
+        const accessToken = jwt.sign({ ...req.user, password: null }, JWT_SECRET);
+        
+        return res.status(200).json({
+            status: 'OK',
+            message: 'Successfully logged in',
+            data: {
+                accessToken
+            }
+        });
     }
 };
