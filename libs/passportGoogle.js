@@ -8,7 +8,6 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
         try {
             const userData = await User.upsertByEmail(profile);
-
             done(null, userData);
         } catch (err) {
             done(err, null);

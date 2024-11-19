@@ -16,10 +16,6 @@ DROP TABLE IF EXISTS
 	payment,
 	invoice CASCADE;
 
-DROP TYPE IF EXISTS gender CASCADE;
-
-CREATE TYPE gender AS ENUM ('male', 'female');
-
 CREATE TABLE IF NOT EXISTS user_account (
     id int GENERATED ALWAYS AS IDENTITY,
 	username varchar(30) NOT NULL,
@@ -31,24 +27,37 @@ CREATE TABLE IF NOT EXISTS user_account (
 
 CREATE TABLE IF NOT EXISTS profile (
 	id int GENERATED ALWAYS AS IDENTITY,
-	user_account_id int NOT NULL REFERENCES user_account(id), 
+	user_account_id int UNIQUE NOT NULL, 
 	first_name varchar(100) NOT NULL,
 	last_name varchar(100) NOT NULL,
 	profile_gender gender,
 	birthdate date,
-	address varchar(255),
 	phone_number varchar(15),
 	picture_url text,
+	PRIMARY KEY (id),
+	FOREIGN KEY (user_account_id) REFERENCES user_account(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS item (
+	id int GENERATED ALWAYS AS IDENTITY,
+	name varchar(255) NOT NULL,
+	price int NOT NULL,
+	type item_type NOT NULL,
+	description text,
 	PRIMARY KEY (id)
 );
 
-CREATE OR REPLACE PROCEDURE remove_user_data()
-LANGUAGE plpgsql
-AS $$
-BEGIN
-	EXECUTE 'TRUNCATE TABLE user_account CASCADE';
-    EXECUTE 'TRUNCATE TABLE profile CASCADE';
-    EXECUTE 'ALTER SEQUENCE user_account_id_seq RESTART WITH 1';
-    EXECUTE 'ALTER SEQUENCE profile_id_seq RESTART WITH 1';
-END;
-$$;
+CREATE TABLE IF NOT EXISTS item_option (
+	id int GENERATED ALWAYS AS IDENTITY,
+	name varchar(100) NOT NULL,
+	type varchar(50) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS item_specification (
+	id int GENERATED ALWAYS AS IDENTITY,
+	item_id int NOT NULL REFERENCES item(id),
+	item_option_id int REFERENCES item_option(id),
+	price int DEFAULT 0,
+	PRIMARY KEY (id)
+);

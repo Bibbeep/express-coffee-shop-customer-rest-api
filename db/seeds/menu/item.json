@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Thandwe Airport",
+        "price": 35000,
+        "type": "food",
+        "description": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam."
+    },
+    {
+        "name": "Stevens Field",
+        "price": 20000,
+        "type": "food",
+        "description": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat."
+    },
+    {
+        "name": "Drayton Valley Industrial Airport",
+        "price": 32500,
+        "type": "others",
+        "description": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat."
+    },
+    {
+        "name": "Yan'an Ershilipu Airport",
+        "price": 36000,
+        "type": "food",
+        "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."
+    },
+    {
+        "name": "Texada Gillies Bay Airport",
+        "price": 39500,
+        "type": "food",
+        "description": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem."
+    },
+    {
+        "name": "Jammu Airport",
+        "price": 20500,
+        "type": "others",
+        "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis."
+    },
+    {
+        "name": "Dr. Antonio Nicolás Briceño Airport",
+        "price": 19000,
+        "type": "drink",
+        "description": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui."
+    },
+    {
+        "name": "Bonnyville Airport",
+        "price": 18500,
+        "type": "food",
+        "description": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio."
+    },
+    {
+        "name": "Portland Hillsboro Airport",
+        "price": 34000,
+        "type": "snack",
+        "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus."
+    },
+    {
+        "name": "General Rodolfo Sánchez Taboada International Airport",
+        "price": 19500,
+        "type": "food",
+        "description": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem."
+    },
+    {
+        "name": "Lalmonirhat Airport",
+        "price": 50000,
+        "type": "drink",
+        "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus."
+    },
+    {
+        "name": "Caravelas Airport",
+        "price": 38500,
+        "type": "snack",
+        "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus."
+    },
+    {
+        "name": "Prospect Creek Airport",
+        "price": 46000,
+        "type": "others",
+        "description": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+    },
+    {
+        "name": "Wau Airport",
+        "price": 37000,
+        "type": "snack",
+        "description": "In congue. Etiam justo. Etiam pretium iaculis justo."
+    },
+    {
+        "name": "Gonder Airport",
+        "price": 47500,
+        "type": "drink",
+        "description": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis."
+    },
+    {
+        "name": "Weihai Airport",
+        "price": 47500,
+        "type": "snack",
+        "description": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus."
+    },
+    {
+        "name": "Negril Airport",
+        "price": 33000,
+        "type": "snack",
+        "description": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum."
+    },
+    {
+        "name": "Kampong Chhnang Airport",
+        "price": 48000,
+        "type": "food",
+        "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem."
+    },
+    {
+        "name": "Bobo Dioulasso Airport",
+        "price": 43500,
+        "type": "food",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus."
+    },
+    {
+        "name": "Neyveli Airport",
+        "price": 22500,
+        "type": "drink",
+        "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
+    }
+]

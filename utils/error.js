@@ -1,46 +1,48 @@
-class BadRequestError extends Error {
-    constructor (message) {
+class HttpError extends Error {
+    constructor(message, statusCode) {
         super(message);
-        this.statusCode = 400;
+        this.statusCode = statusCode;
     }
 }
 
-class UnauthorizedError extends Error {
+class BadRequestError extends HttpError {
     constructor (message) {
-        super(message);
-        this.statusCode = 401;
+        super(message, 400);
     }
 }
 
-class ForbiddenError extends Error {
+class UnauthorizedError extends HttpError {
     constructor (message) {
-        super(message);
-        this.statusCode = 403;
+        super(message, 401);
     }
 }
 
-class NotFoundError extends Error {
-    constructor (message) {
-        super(message);
-        this.statusCode = 404;
-    }
-}
-
-class UserExistError extends Error {
+class InvalidCredentialError extends HttpError {
     constructor(message) {
-        super(message);
-        this.statusCode = 200;
+        super(message, 401);
     }
 }
 
-class InvalidCredentialError extends Error {
+class ForbiddenError extends HttpError {
+    constructor (message) {
+        super(message, 403);
+    }
+}
+
+class NotFoundError extends HttpError {
+    constructor (message) {
+        super(message, 404);
+    }
+}
+
+class UserExistError extends HttpError {
     constructor(message) {
-        super(message);
-        this.statusCode = 401;
+        super(message, 200);
     }
 }
 
 module.exports = {
+    HttpError,
     BadRequestError,
     UnauthorizedError,
     ForbiddenError,

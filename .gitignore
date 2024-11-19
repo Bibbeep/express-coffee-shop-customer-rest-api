@@ -2,4 +2,6 @@ diagrams
 node_modules
 .env
 .http
+query.pgsql
 note.md
+sandbox.js

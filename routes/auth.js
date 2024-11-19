@@ -1,21 +1,10 @@
 const router = require('express').Router();
 const passport = require('../libs/passportGoogle');
-const userController = require('../controllers/user');
+const UserController = require('../controllers/user');
 
-router.post('/register', userController.create);
-
-router.get('/login', (req, res) => {
-    res.send('Login page');
-});
-
-router.post('/login', userController.login);
-
+router.post('/register', UserController.create);
+router.post('/login', UserController.login);
 router.get('/login/google', passport.authenticate('google'));
-
-router.get(
-    '/redirect/google',
-    passport.authenticate('google', { failureRedirect: '/api/v1/auth/login', session: false }),
-    userController.googleAuth
-);
+router.get('/redirect/google', passport.authenticate('google', { failureRedirect: '/api/auth/login', session: false }), UserController.googleAuth);
 
 module.exports = router;

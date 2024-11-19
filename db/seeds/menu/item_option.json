@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Honorable",
+        "type": "temperature"
+    },
+    {
+        "name": "Mr",
+        "type": "cup size"
+    },
+    {
+        "name": "Dr",
+        "type": "syrup"
+    },
+    {
+        "name": "Ms",
+        "type": "cup size"
+    },
+    {
+        "name": "Mrs",
+        "type": "cup size"
+    },
+    {
+        "name": "Ms",
+        "type": "syrup"
+    },
+    {
+        "name": "Ms",
+        "type": "cup size"
+    },
+    {
+        "name": "Mr",
+        "type": "temperature"
+    },
+    {
+        "name": "Honorable",
+        "type": "milk"
+    },
+    {
+        "name": "Mr",
+        "type": "temperature"
+    },
+    {
+        "name": "Mr",
+        "type": "milk"
+    },
+    {
+        "name": "Mrs",
+        "type": "milk"
+    },
+    {
+        "name": "Ms",
+        "type": "syrup"
+    },
+    {
+        "name": "Dr",
+        "type": "ice amount"
+    },
+    {
+        "name": "Mr",
+        "type": "syrup"
+    },
+    {
+        "name": "Rev",
+        "type": "milk"
+    },
+    {
+        "name": "Rev",
+        "type": "temperature"
+    },
+    {
+        "name": "Rev",
+        "type": "ice amount"
+    },
+    {
+        "name": "Honorable",
+        "type": "ice amount"
+    },
+    {
+        "name": "Mrs",
+        "type": "milk"
+    }
+]

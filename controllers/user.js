@@ -1,10 +1,11 @@
 const UserValidation = require('../validations/user');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
+const { NotFoundError } = require('../utils/error');
 const { JWT_SECRET } = process.env;
 
 module.exports = {
-    create: async (req, res) => {
+    create: async (req, res, next) => {
         try {
             await UserValidation.validateRegister(req.body);
             const userData = await User.create(req.body);
@@ -15,24 +16,14 @@ module.exports = {
                 data: userData
             });
         } catch (err) {
-            if (err.statusCode) {
-                return res.status(err.statusCode).json({
-                    status: 'Fail',
-                    message: err.message
-                });
-            }
-
-            return res.status(500).json({
-                status: 'Fail',
-                message: 'Failed to register'
-            });
+            next(err);
         }
     },
-    login: async (req, res) => {
+    login: async (req, res, next) => {
         try {
             const userPayload = await UserValidation.validateLogin(req.body);
             const accessToken = jwt.sign(userPayload, JWT_SECRET);
-
+            
             return res.status(200).json({
                 status: 'OK',
                 message: 'Successfully logged in',
@@ -41,17 +32,7 @@ module.exports = {
                 }
             });
         } catch (err) {
-            if (err.statusCode) {
-                return res.status(err.statusCode).json({
-                    status: 'Fail',
-                    message: err.message
-                });
-            }
-
-            return res.status(500).json({
-                status: 'Fail',
-                message: 'Failed to login'
-            });
+            next(err);
         }
     },
     googleAuth: (req, res) => {
@@ -64,5 +45,64 @@ module.exports = {
                 accessToken
             }
         });
-    }
+    },
+    getAll: async (req, res, next) => {
+        try {
+            const usersData = await User.findAll();
+
+            if (!usersData) {
+                return res.status(200).json({
+                    status: 'OK',
+                    message: 'Users is empty',
+                    data: []
+                });
+            }
+
+            return res.status(200).json({
+                status: 'OK',
+                message: 'Successfully retrieved users data',
+                data: usersData
+            });
+        } catch (err) {
+            next(err);
+        }
+    },
+    getById: async (req, res, next) => {
+        try {
+            await UserValidation.validateId(req.params);
+            const userData = await User.findById(req.params.id);
+
+            if (!userData) {
+                throw new NotFoundError('User not found');
+            }
+
+            return res.status(200).json({
+                status: 'OK',
+                message: 'Successfully retrieved user details',
+                data: {
+                    ...userData.user,
+                    profile: { ...userData.profile }
+                }
+            });
+        } catch (err) {
+            next(err);
+        }
+    },
+    deleteById: async (req, res, next) => {
+        try {
+            await UserValidation.validateId(req.params);
+            const result = await User.removeById(req.params.id);
+
+            if (!result) {
+                throw new NotFoundError('User not found');
+            }
+
+            return res.status(200).json({
+                status: 'OK',
+                message: 'Successfully deleted user'
+            });
+        } catch (err) {
+            next(err);
+        }
+    },
 };
